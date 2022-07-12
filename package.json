@@ -1,6 +1,6 @@
 {
   "name": "webcompounder",
-  "version": "1.1.0",
+  "version": "1.1.1",
   "description": "webCompounder - A tool to compound/combine/concatenate files; made to simplify web development (webcompounder.ehan.dev)",
   "main": "bin/index.js",
   "scripts": {
