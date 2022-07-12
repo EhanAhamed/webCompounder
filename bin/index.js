@@ -2,6 +2,7 @@
 
 const yargs = require("yargs");
 const fs = require("fs");
+var async = require("async");
 
 const usage = "\n" + "Usage: webCompounder ./pathTo/configFile.json";
 const options = yargs.usage(usage).help(true).argv;
