@@ -64,7 +64,10 @@ if (yargs.argv._[0] != null) {
         async.apply(readInput, configJson.input),
         async.apply(writeOutput, configJson.output),
       ],
-      configJson.callback
+      new Function(
+        configJson.callback.functionParameter,
+        configJson.callback.functionBody
+      )
     );
   }
 }
