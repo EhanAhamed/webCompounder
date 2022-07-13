@@ -83,6 +83,7 @@ Installation: `./`
 ```shell
 > npm install webcompounder --save-dev
 ```
+
 <br>
 
 Input File: `./src/utils/colors.js`
@@ -102,6 +103,7 @@ var colors = {
   black: "#000000",
 };
 ```
+
 <br>
 
 Input File: `./src/utils/utils.js`
@@ -113,6 +115,7 @@ var utils = {
   colors: colors,
 };
 ```
+
 <br>
 
 Input File: `./src/main.js`
@@ -124,6 +127,7 @@ var someLibrary = {
   utils: utils,
 };
 ```
+
 <br>
 
 **Configuration File:** `./build/config/buildJs.json`
@@ -139,7 +143,7 @@ var someLibrary = {
 }
 ```
 
-**Notice how even though the configuration file is in `./build/config/`, the paths are relative to `./`.  This is because `./` is where webCompounder was installed into.**
+**Notice how even though the configuration file is in `./build/config/`, the paths are relative to `./`. This is because `./` is where webCompounder was installed into.**
 
 <br>
 
@@ -181,3 +185,8 @@ var someLibrary = {
   utils: utils,
 };
 ```
+
+<br>
+
+<h1 align="center"> webCompounder </h1>
+<p align="center">Copyright (c) 2022 Ehan Ahamed and contributors <br> Licensed Under the UPL-1.0 License <br> <a href="https://github.com/EhanAhamed/webCompounder/blob/main/LICENSE.txt">See License File</a></p>
