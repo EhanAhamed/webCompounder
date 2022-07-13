@@ -153,7 +153,7 @@ var someLibrary = {
 
 ```shell
 > webCompounder --version
-1.1.2
+1.1.3
 > webCompounder ./build/config/buildJs.json
 Build Completed
 ```
