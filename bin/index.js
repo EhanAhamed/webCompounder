@@ -9,7 +9,7 @@ const usage =
   "Usage: `webCompounder ./pathTo/configFile.json`" +
   "\n" +
   "\n" +
-  "See the website or repository for help with the cli or config files." +
+  "See the website or github repository for help with the cli or config files." +
   "\n" +
   "(https://webcompounder.ehan.dev/) (https://github.com/EhanAhamed/webCompounder/)";
 const options = yargs.usage(usage).help(true).argv;
@@ -35,7 +35,7 @@ if (yargs.argv._[0] != null) {
         "Config file does not have an input value, or input value is invalid." +
         "\n" +
         "\n" +
-        "See the website or repository for help with config files." +
+        "See the website or github repository for help with config files." +
         "\n" +
         "(https://webcompounder.ehan.dev/) (https://github.com/EhanAhamed/webCompounder/)" +
         "\n"
@@ -48,7 +48,7 @@ if (yargs.argv._[0] != null) {
         "Config file does not have an output value, or output value is invalid" +
         "\n" +
         "\n" +
-        "See the website or repository for help with config files." +
+        "See the website or github repository for help with config files." +
         "\n" +
         "(https://webcompounder.ehan.dev/) (https://github.com/EhanAhamed/webCompounder/)" +
         "\n"
