@@ -1,3 +1,5 @@
+<br>
+<br>
 <h1 align="center"> webCompounder </h1>
 <p align="center"> A tool to compound/combine/concatenate files; <br> made to simplify web development. </p> 
 <p align="center"> <a href="https://webcompounder.ehan.dev/"> Website (webcompounder.ehan.dev) </a> - <a href="https://www.npmjs.com/package/webcompounder"> Node Module (npm) </a> - <a href="https://github.com/EhanAhamed/webcompounder.ehan.dev/"> Website Source Code (GitHub) </a>
@@ -78,7 +80,7 @@ The functionParameter's variable will not exist if there is no error, you can us
 <br>
 <h2>📁 In-Depth Usage Example </h2>
 
-Installation: `./`
+**Installation:** `./`
 
 ```shell
 > npm install webcompounder --save-dev
@@ -106,7 +108,7 @@ var colors = {
 
 <br>
 
-Input File: `./src/utils/utils.js`
+**Input File:** `./src/utils/utils.js`
 
 **This file's code does not matter, its just an example of a file that will be combined.**
 
@@ -147,7 +149,7 @@ var someLibrary = {
 
 <br>
 
-**Terminal/Shell**: `./`
+**Terminal/Shell:** `./`
 
 ```shell
 > webCompounder --version
@@ -190,3 +192,5 @@ var someLibrary = {
 
 <h1 align="center"> webCompounder </h1>
 <p align="center">Copyright (c) 2022 Ehan Ahamed and contributors <br> Licensed Under the UPL-1.0 License <br> <a href="https://github.com/EhanAhamed/webCompounder/blob/main/LICENSE.txt">See License File</a></p>
+<br />
+<br />
