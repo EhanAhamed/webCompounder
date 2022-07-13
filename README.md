@@ -2,7 +2,7 @@
 <br>
 <h1 align="center"> webCompounder </h1>
 <p align="center"> A tool to compound/combine/concatenate files; <br> made to simplify web development. </p> 
-<p align="center"> <a href="https://webcompounder.ehan.dev/"> Website </a> - <a href="https://github.com/EhanAhamed/webCompounder"> Source Code (GitHub) </a> - <a href="https://www.npmjs.com/package/webcompounder"> Node Module (npm) </a> - <a href="https://github.com/EhanAhamed/webcompounder.ehan.dev/"> Website Source Code (GitHub) </a>
+<p align="center"> <a href="https://webcompounder.ehan.dev/"> Website </a> - <a href="https://github.com/EhanAhamed/webCompounder"> Source Code (GitHub) </a> - <a href="https://www.npmjs.com/package/webcompounder"> Node Module (npm) </a> - <a href="https://github.com/EhanAhamed/webcompounder.ehan.dev/"> Website Source Code (GitHub) </a> </p>
 
 <br>
 <h2>📦 Installation </h2>
