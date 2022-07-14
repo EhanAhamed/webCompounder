@@ -9,7 +9,8 @@
     "compound",
     "concat",
     "concatenate",
-    "files"
+    "files",
+    "webCompounder"
   ],
   "main": "bin/index.js",
   "scripts": {
