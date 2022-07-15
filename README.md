@@ -1,5 +1,6 @@
 <br>
 <br>
+<p align="center"><a href="https://webcompounder.ehan.dev/"><img width="200" height="200" src="./assets/img/icon.png"></a></p>
 <h1 align="center"> webCompounder </h1>
 <p align="center"> A tool to bundle files; <br> and simplify web development. </p> 
 <p align="center"> <a href="https://webcompounder.ehan.dev/"> Website </a> - <a href="https://github.com/EhanAhamed/webCompounder"> Source Code (GitHub) </a> - <a href="https://www.npmjs.com/package/webcompounder"> Node Module (npm) </a> - <a href="https://github.com/EhanAhamed/webcompounder.ehan.dev/"> Website Source Code (GitHub) </a> </p>
