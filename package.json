@@ -12,6 +12,7 @@
     "files",
     "webCompounder"
   ],
+  "type": "module",
   "main": "bin/index.js",
   "scripts": {
     "start": "node ./bin/index.js"
@@ -31,6 +32,8 @@
   "homepage": "https://webcompounder.ehan.dev",
   "dependencies": {
     "async": "^3.2.4",
+    "chalk": "^5.0.1",
+    "globby": "^13.1.2",
     "yargs": "^17.5.1"
   }
 }
