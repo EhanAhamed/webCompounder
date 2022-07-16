@@ -1,59 +1,62 @@
-#! /usr/bin/env node
+#!/usr/bin/env node
 
-const yargs = require("yargs");
+/* ES Module Imports */
+import chalk from "chalk";
+import { globby } from "globby";
+import { createRequire } from "module";
+
+/* CommonJS Require Definition */
+const require = createRequire(import.meta.url);
+
+/* CommonJS Imports */
+const async = require("async");
 const fs = require("fs");
-var async = require("async");
+const yargs = require("yargs");
 
-const usage =
+/* Yargs CLI Setup */
+yargs.usage(
   "\n" +
-  "Usage: `webCompounder ./pathTo/configFile.json`" +
-  "\n" +
-  "\n" +
-  "See the website or github repository for help with the cli or config files." +
-  "\n" +
-  "(https://webcompounder.ehan.dev/) (https://github.com/EhanAhamed/webCompounder/)";
-const options = yargs.usage(usage).help(true).argv;
+    chalk.blue("Usage:") +
+    "\n" +
+    chalk.yellow("> webCompounder ./pathTo/configFile.json") +
+    "\n" +
+    "\n" +
+    chalk.blue("Read the documentation for further help.") +
+    "\n" +
+    chalk.blue("(https://webcompounder.ehan.dev/docs/)")
+);
+yargs.version("v1.1.4");
+yargs.alias("v", "version");
+yargs.alias("h", "help");
 
 if (yargs.argv._[0] == null) {
-  console.error(
+  yargs.showHelp();
+  yargs.exit(0);
+}
+
+if (yargs.argv._[1] == null && yargs.argv._[2] == null) {
+  console.log(
     "\n" +
-      "No config file specified," +
+      chalk.blue("No CLI callback function was provided.") +
       "\n" +
-      "Use `webCompounder --help` for help." +
+      chalk.blue("Using default CLI callback.") +
       "\n"
   );
 }
 
-if (yargs.argv._[0] != null) {
-  const configJson = JSON.parse(
-    fs.readFileSync(yargs.argv._[0], { encoding: "utf-8" })
+if (yargs.argv._[1] != null && yargs.argv._[2] == null) {
+  console.log(
+    "\n" +
+      chalk.blue("CLI callback function parameter was Provided.") + "\n" +
+      chalk.blue("Paremeter provided is ") + chalk.yellow(yargs.argv._[1]) + "\n" +"\n" +
+      chalk.blue("However, no CLI callback function body was provided.") + "\n" +
+      chalk.blue("Using default CLI callback.") +
+      "\n"
   );
+}
 
-  if (yargs.argv._[0] != null && Array.isArray(configJson.input) == false) {
-    console.error(
-      "\n" +
-        "Config file does not have an input value, or input value is invalid." +
-        "\n" +
-        "\n" +
-        "See the website or github repository for help with config files." +
-        "\n" +
-        "(https://webcompounder.ehan.dev/) (https://github.com/EhanAhamed/webCompounder/)" +
-        "\n"
-    );
-  }
+yargs.exit(0);
 
-  if (yargs.argv._[0] != null && typeof configJson.output !== "string") {
-    console.error(
-      "\n" +
-        "Config file does not have an output value, or output value is invalid" +
-        "\n" +
-        "\n" +
-        "See the website or github repository for help with config files." +
-        "\n" +
-        "(https://webcompounder.ehan.dev/) (https://github.com/EhanAhamed/webCompounder/)" +
-        "\n"
-    );
-  }
 
   if (
     Array.isArray(configJson.input) == true &&
