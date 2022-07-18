@@ -30,7 +30,7 @@ yargs.alias("v", "version");
 yargs.alias("h", "help");
 
 /* Show Help */
-if (yargs.argv._[0] == null) {
+if (typeof yargs.argv._[0] === "undefined") {
   yargs.showHelp();
   yargs.exit(0);
 }
@@ -67,8 +67,84 @@ fs.readFile(yargs.argv._[0], { encoding: "utf8" }, (error, configFile) => {
       );
       yargs.exit(1);
     }
+    onConfigLoaded();
   }
 });
+
+function onConfigLoaded() {
+  /* Config File Validation */
+  if (typeof configJson.workflow === "undefined") {
+    console.error(
+      "\n" +
+        chalk.red("Config JSON is invalid!") +
+        "\n" +
+        chalk.red('"') +
+        chalk.yellow("workflow") +
+        chalk.red('" ') +
+        chalk.red("value was not found in config file.") +
+        "\n"
+    );
+    yargs.exit(1);
+  }
+  if (typeof configJson.input === "undefined") {
+    console.error(
+      "\n" +
+        chalk.red("Config JSON is invalid!") +
+        "\n" +
+        chalk.red('"') +
+        chalk.yellow("input") +
+        chalk.red('" ') +
+        chalk.red("value was not found in config file.") +
+        "\n"
+    );
+    yargs.exit(1);
+  }
+  if (typeof configJson.output === "undefined") {
+    console.error(
+      "\n" +
+        chalk.red("Config JSON is invalid!") +
+        "\n" +
+        chalk.red('"') +
+        chalk.yellow("output") +
+        chalk.red('" ') +
+        chalk.red("value was not found in config file.") +
+        "\n"
+    );
+    yargs.exit(1);
+  }
+  if (
+    typeof configJson.workflow !== "undefined" &&
+    typeof configJson.workflow !== "string"
+  ) {
+    console.error(
+      "\n" +
+        chalk.red("Config JSON is invalid!") +
+        "\n" +
+        chalk.red('"') +
+        chalk.yellow("workflow") +
+        chalk.red('" ') +
+        chalk.red("value is not a string.") +
+        "\n"
+    );
+    yargs.exit(1);
+  }
+  if (
+    typeof configJson.output !== "undefined" &&
+    typeof configJson.output !== "string"
+  ) {
+    console.error(
+      "\n" +
+        chalk.red("Config JSON is invalid!") +
+        "\n" +
+        chalk.red('"') +
+        chalk.yellow("output") +
+        chalk.red('" ') +
+        chalk.red("value is not a string.") +
+        "\n"
+    );
+    yargs.exit(1);
+  }
+}
 
 /*
   async.waterfall(
@@ -81,16 +157,16 @@ fs.readFile(yargs.argv._[0], { encoding: "utf8" }, (error, configFile) => {
       configJson.callback.functionBody
     )
   );
-}
 
-function writeOutput(output, buffers, callback) {
-  fs.writeFile(output, Buffer.concat(buffers), callback);
-}
+  function writeOutput(output, buffers, callback) {
+    fs.writeFile(output, Buffer.concat(buffers), callback);
+  }
 
-function readInput(input, callback) {
-  async.mapSeries(input, readFile, callback);
+  function readInput(input, callback) {
+    async.mapSeries(input, readFile, callback);
 
-function readFile(input, callback) {
-  fs.readFile(input, callback);
-}
+    function readFile(input, callback) {
+      fs.readFile(input, callback);
+    }
+  }
 */
