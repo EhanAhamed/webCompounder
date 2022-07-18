@@ -29,51 +29,60 @@ yargs.version("v1.1.4");
 yargs.alias("v", "version");
 yargs.alias("h", "help");
 
+/* Show Help */
 if (yargs.argv._[0] == null) {
   yargs.showHelp();
   yargs.exit(0);
 }
 
-if (yargs.argv._[1] == null && yargs.argv._[2] == null) {
-  console.log(
-    "\n" +
-      chalk.blue("No CLI callback function was provided.") +
+let configJson;
+
+fs.readFile(yargs.argv._[0], { encoding: "utf8" }, (error, configFile) => {
+  if (error) {
+    console.error(
       "\n" +
-      chalk.blue("Using default CLI callback.") +
-      "\n"
-  );
-}
-
-if (yargs.argv._[1] != null && yargs.argv._[2] == null) {
-  console.log(
-    "\n" +
-      chalk.blue("CLI callback function parameter was Provided.") + "\n" +
-      chalk.blue("Paremeter provided is ") + chalk.yellow(yargs.argv._[1]) + "\n" +"\n" +
-      chalk.blue("However, no CLI callback function body was provided.") + "\n" +
-      chalk.blue("Using default CLI callback.") +
-      "\n"
-  );
-}
-
-yargs.exit(0);
-
-
-  if (
-    Array.isArray(configJson.input) == true &&
-    typeof configJson.output === "string"
-  ) {
-    async.waterfall(
-      [
-        async.apply(readInput, configJson.input),
-        async.apply(writeOutput, configJson.output),
-      ],
-      new Function(
-        configJson.callback.functionParameter,
-        configJson.callback.functionBody
-      )
+        chalk.red("Errored while loading config file!") +
+        "\n" +
+        "\n" +
+        chalk.red("ERROR:") +
+        "\n" +
+        error +
+        "\n"
     );
+    yargs.exit(1);
+  } else {
+    console.log("\n" + chalk.green("Sucessfully loaded config file!") + "\n");
+    try {
+      configJson = JSON.parse(configFile);
+    } catch (error) {
+      console.error(
+        "\n" +
+          chalk.red("Errored while parsing config JSON!") +
+          "\n" +
+          "\n" +
+          chalk.red("ERROR:") +
+          "\n" +
+          error +
+          "\n"
+      );
+      yargs.exit(1);
+    }
   }
+});
+
+/*
+  async.waterfall(
+    [
+      async.apply(readInput, configJson.input),
+      async.apply(writeOutput, configJson.output),
+    ],
+    new Function(
+      configJson.callback.functionParameter,
+      configJson.callback.functionBody
+    )
+  );
 }
+
 function writeOutput(output, buffers, callback) {
   fs.writeFile(output, Buffer.concat(buffers), callback);
 }
@@ -81,7 +90,7 @@ function writeOutput(output, buffers, callback) {
 function readInput(input, callback) {
   async.mapSeries(input, readFile, callback);
 
-  function readFile(input, callback) {
-    fs.readFile(input, callback);
-  }
+function readFile(input, callback) {
+  fs.readFile(input, callback);
 }
+*/
