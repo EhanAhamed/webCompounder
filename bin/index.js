@@ -67,11 +67,11 @@ fs.readFile(yargs.argv._[0], { encoding: "utf8" }, (error, configFile) => {
       );
       yargs.exit(1);
     }
-    onConfigLoaded();
+    validateConfig();
   }
 });
 
-function onConfigLoaded() {
+function validateConfig() {
   /* Config File Validation */
   if (typeof configJson.workflow === "undefined") {
     console.error(
@@ -129,8 +129,76 @@ function onConfigLoaded() {
     yargs.exit(1);
   }
   if (
+    typeof configJson.input !== "undefined" &&
+    typeof configJson.input !== "string" &&
+    Array.isArray(configJson.input) == false
+  ) {
+    console.error(
+      "\n" +
+        chalk.red("Config JSON is invalid!") +
+        "\n" +
+        chalk.red('"') +
+        chalk.yellow("input") +
+        chalk.red('" ') +
+        chalk.red("value is not an array or a string.") +
+        "\n"
+    );
+    yargs.exit(1);
+  }
+  if (
     typeof configJson.output !== "undefined" &&
     typeof configJson.output !== "string"
+  ) {
+    console.error(
+      "\n" +
+        chalk.red("Config JSON is invalid!") +
+        "\n" +
+        chalk.yellow('"output"') +
+        chalk.red("value is not a string.") +
+        "\n"
+    );
+    yargs.exit(1);
+  }
+  if (
+    typeof configJson.workflow !== "undefined" &&
+    typeof configJson.workflow === "string" &&
+    configJson.workflow != "bundle"
+  ) {
+    console.error(
+      "\n" +
+        chalk.red("Config JSON is invalid!") +
+        "\n" +
+        chalk.yellow('"workflow" ') +
+        chalk.red("value is not a supported workflow type.") +
+        "\n" +
+        chalk.red("Value provided was ") +
+        chalk.yellow('"' + configJson.workflow + '"') +
+        "\n" +
+        "\n" +
+        chalk.blue("Currently supported workflow types include ") +
+        chalk.yellow('"bundle"') +
+        "\n"
+    );
+    yargs.exit(1);
+  }
+  if (
+    typeof configJson.input !== "undefined" &&
+    typeof configJson.input === "string"
+  ) {
+    console.error(
+      "\n" +
+        chalk.red("Config JSON is invalid!") +
+        "\n" +
+        chalk.yellow('"input"') +
+        chalk.red("value is a string, which is not supported yet.") +
+        "\n"
+    );
+    yargs.exit(1);
+  }
+  if (
+    typeof configJson.output !== "undefined" &&
+    typeof configJson.output !== "string" &&
+    Array.isArray(configJson.output) == true
   ) {
     console.error(
       "\n" +
@@ -139,23 +207,21 @@ function onConfigLoaded() {
         chalk.red('"') +
         chalk.yellow("output") +
         chalk.red('" ') +
-        chalk.red("value is not a string.") +
+        chalk.red("value is an array, which is not supported yet.") +
         "\n"
     );
     yargs.exit(1);
   }
-}
+  
+  /*
+  const inputPaths = globby(configJson.input);
 
-/*
   async.waterfall(
     [
-      async.apply(readInput, configJson.input),
+      async.apply(readInput, inputPaths),
       async.apply(writeOutput, configJson.output),
     ],
-    new Function(
-      configJson.callback.functionParameter,
-      configJson.callback.functionBody
-    )
+    new Function(callback.functionParameter, callback.functionBody)
   );
 
   function writeOutput(output, buffers, callback) {
@@ -170,3 +236,4 @@ function onConfigLoaded() {
     }
   }
 */
+}
