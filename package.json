@@ -15,6 +15,7 @@
   "type": "module",
   "main": "bin/index.js",
   "scripts": {
+    "bundle": "webCompounder ./config/bundle.config.json",
     "start": "node ./bin/index.js"
   },
   "bin": {
@@ -38,5 +39,6 @@
   },
   "devDependencies": {
     "prettier": "^2.7.1",
+    "webcompounder": "^1.1.4"
   }
 }
