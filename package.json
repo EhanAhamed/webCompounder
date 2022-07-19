@@ -35,5 +35,8 @@
     "chalk": "^5.0.1",
     "globby": "^13.1.2",
     "yargs": "^17.5.1"
+  },
+  "devDependencies": {
+    "prettier": "^2.7.1",
   }
 }
