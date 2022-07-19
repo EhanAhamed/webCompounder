@@ -49,7 +49,7 @@ Here's an example:
     "./globsAre/**/alsoSupported/*.cool"
     "./yetAnother.extension"
   ],
-  "output": "./pathToOutputFile/outputFile.extension",
+  "output": "./pathToOutputFile/outputFile.extension"
 }
 ```
 
@@ -128,6 +128,7 @@ var someLibrary = {
 
 ```json
 {
+  "workflow": "bundle",
   "input": ["./src/utils/colors.js", "./src/utils/utils.js", "./src/main.js"],
   "output": "./build/main.build.js"
 }
