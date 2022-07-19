@@ -212,7 +212,7 @@ function validateConfig() {
     );
     yargs.exit(1);
   }
-  
+
   /*
   const inputPaths = globby(configJson.input);
 
