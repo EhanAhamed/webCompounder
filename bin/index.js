@@ -212,28 +212,25 @@ function validateConfig() {
     );
     yargs.exit(1);
   }
+  bundle();
+}
 
-  /*
-  const inputPaths = globby(configJson.input);
-
+async function bundle() {
   async.waterfall(
     [
-      async.apply(readInput, inputPaths),
+      async.apply(readInput, await globby(configJson.input)),
       async.apply(writeOutput, configJson.output),
     ],
-    new Function(callback.functionParameter, callback.functionBody)
+    null
   );
 
   function writeOutput(output, buffers, callback) {
     fs.writeFile(output, Buffer.concat(buffers), callback);
   }
-
   function readInput(input, callback) {
     async.mapSeries(input, readFile, callback);
-
     function readFile(input, callback) {
       fs.readFile(input, callback);
     }
   }
-*/
 }
