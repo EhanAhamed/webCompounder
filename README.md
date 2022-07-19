@@ -34,7 +34,7 @@ Then you put the path to the configuration file as an arguement in the command.
 <br>
 <h2>📋 Configuration Files</h2>
 
-Configuration files are JSON files with an input value, an output value, and an optional callback value.
+Configuration files are JSON files with a workflow value, an input value, and an output value.
 
 The configuration file can have any filename and can be in any folder, but must be a json file and can **not** be outside of the root folder.
 
@@ -42,16 +42,14 @@ Here's an example:
 
 ```json
 {
+  "workflow": "bundle",
   "input": [
     "./pathTo/file.extension",
-    "./pathTo/anotherFile.extension",
+    "./pathTo/aFolder/",
+    "./globsAre/**/alsoSupported/*.cool"
     "./yetAnother.extension"
   ],
   "output": "./pathToOutputFile/outputFile.extension",
-  "callback": {
-    "functionParameter": "variablePassedOnError",
-    "functionBody": "if (variablePassedOnError) { /* do something on error*/ } else { /* do something when complete & no error */}"
-  }
 }
 ```
 
@@ -59,12 +57,9 @@ Here's another, more _real-world_ example:
 
 ```json
 {
+  "workflow": "bundle",
   "input": ["./src/utils/colors.js", "./src/utils/utils.js", "./src/main.js"],
-  "output": "./build/main.build.js",
-  "callback": {
-    "functionParameter": "error",
-    "functionBody": "if (error) { console.error('\n' + error + '\n') } else { console.log('\n' + 'Build Completed' + '\n') }"
-  }
+  "output": "./build/main.build.js"
 }
 ```
 
@@ -73,10 +68,6 @@ The input value is an array, and each string in the array is a file path to the 
 The output value is a single string, and is a file path pointing to the file that all the other files will combine into.
 
 _All_ the file paths are relative to the **root** folder, where `package.json` is and where your terminal/shell session is, _even_ if the configuration file is **not** in the root folder, paths are **still** relative to the root folder!
-
-The callback value is an object. Inside of the callback value is a functionParameter value and a functionBody value. The functionParameter is the variable that gets passed on error. The functionBody is the body of your callback function.
-
-The functionParameter's variable will not exist if there is no error, you can use this to create an error message on error and a sucess message on completion.
 
 <br>
 <h2>📁 In-Depth Usage Example </h2>
@@ -138,11 +129,7 @@ var someLibrary = {
 ```json
 {
   "input": ["./src/utils/colors.js", "./src/utils/utils.js", "./src/main.js"],
-  "output": "./build/main.build.js",
-  "callback": {
-    "functionParameter": "error",
-    "functionBody": "if (error) { console.error('\n' + error + '\n') } else { console.log('\n' + 'Build Completed' + '\n') }"
-  }
+  "output": "./build/main.build.js"
 }
 ```
 
@@ -153,13 +140,16 @@ var someLibrary = {
 **Terminal/Shell:** `./`
 
 ```shell
-> webCompounder --version
-1.1.4
+> webCompounder --v
+v1.1.5
 > webCompounder ./build/config/buildJs.json
-Build Completed
+Sucessfully loaded config file!
+
+Sucessfully bundled files!
+Process Complete!
 ```
 
-**You can run `webCompounder --version` to check the version of webCompounder that's installed. This also helps test if webCompounder is working.**
+**You can run `webCompounder --v` or `webCompounder --version` to check the version of webCompounder that's installed. This also helps test if webCompounder is working.**
 
 <br>
 
