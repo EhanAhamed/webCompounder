@@ -1,0 +1,5 @@
+{
+  "workflow": "bundle",
+  "input": ["./src/webCompounder.js", "./src/cli/", "./src/bundle.js"],
+  "output": "./bin/index.js"
+}
