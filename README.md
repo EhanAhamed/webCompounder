@@ -141,7 +141,7 @@ var someLibrary = {
 **Terminal/Shell:** `./`
 
 ```shell
-> webCompounder --v
+> webCompounder -v
 v1.1.6
 > webCompounder ./build/config/buildJs.json
 Sucessfully loaded config file!
@@ -150,7 +150,7 @@ Sucessfully bundled files!
 Process Complete!
 ```
 
-**You can run `webCompounder --v` or `webCompounder --version` to check the version of webCompounder that's installed. This also helps test if webCompounder is working.**
+**You can run `webCompounder -v` or `webCompounder --version` to check the version of webCompounder that's installed. This also helps test if webCompounder is working.**
 
 <br>
 
