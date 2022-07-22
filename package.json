@@ -15,8 +15,7 @@
   "type": "module",
   "main": "bin/index.js",
   "scripts": {
-    "bundle": "webCompounder ./config/bundle.config.json",
-    "start": "node ./bin/index.js"
+    "bundle": "webCompounder ./config/bundle.config.json"
   },
   "bin": {
     "webCompounder": "./bin/index.js"
