@@ -1,5 +1,6 @@
 {
   "workflow": "bundle",
-  "input": ["./src/webCompounder.js", "./src/cli/", "./src/bundle.js"],
-  "output": "./bin/index.js"
+  "input": ["./src/webCompounder.js", "./src/cli/cli.js", "./src/cli/loadConfig.js", "./src/cli/validateConfig.js", "./src/bundle.js"],
+  "output": "./bin/index.js",
+  "glob": false
 }
