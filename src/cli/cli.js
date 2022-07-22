@@ -12,7 +12,7 @@ yargs.usage(
     chalk.blue("(https://webcompounder.ehan.dev/docs/)")
 );
 
-yargs.version("v1.1.5"); /* Set Version */
+yargs.version("v1.1.6"); /* Set Version */
 yargs.alias("v", "version"); /* Add Version Alias */
 yargs.alias("h", "help"); /* Add Help Alias */
 

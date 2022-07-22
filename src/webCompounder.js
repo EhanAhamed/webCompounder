@@ -1,7 +1,7 @@
 #!/usr/bin/env node
 
 /*!
- * webCompounder v1.1.5 (https://webcompounder.ehan.dev/) (https://github.com/EhanAhamed/webCompounder/)
+ * webCompounder v1.1.6 (https://webcompounder.ehan.dev/) (https://github.com/EhanAhamed/webCompounder/)
  * Copyright (c) 2022 Ehan Ahamed and contributors
  * Licensed Under the UPL-1.0 License (https://github.com/EhanAhamed/webCompounder/blob/main/LICENSE.txt)
  */

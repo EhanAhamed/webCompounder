@@ -142,7 +142,7 @@ var someLibrary = {
 
 ```shell
 > webCompounder --v
-v1.1.5
+v1.1.6
 > webCompounder ./build/config/buildJs.json
 Sucessfully loaded config file!
 
