@@ -38,6 +38,6 @@
   },
   "devDependencies": {
     "prettier": "^2.7.1",
-    "webcompounder": "^1.1.4"
+    "webcompounder": "^1.1.5"
   }
 }
